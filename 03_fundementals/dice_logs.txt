@@ -1,0 +1,60 @@
+You: 5, Opponent: 3
+You win!
+You: 4, Opponent: 5
+You lose!
+You: 1, Opponent: 4
+You lose!
+You: 1, Opponent: 5
+You lose!
+You: 4, Opponent: 4
+Draw
+You: 1, Opponent: 6
+You lose!
+You: 3, Opponent: 5
+You lose!
+You: 2, Opponent: 6
+You lose!
+You: 3, Opponent: 1
+You win!
+You: 2, Opponent: 5
+You lose!
+You: 6, Opponent: 6
+Draw
+You: 1, Opponent: 4
+You lose!
+You: 3, Opponent: 5
+You lose!
+You: 4, Opponent: 4
+Draw
+You: 3, Opponent: 6
+You lose!
+You: 1, Opponent: 6
+You lose!
+You: 6, Opponent: 3
+You win!
+You: 3, Opponent: 1
+You win!
+You: 4, Opponent: 1
+You win!
+You: 5, Opponent: 6
+You lose!
+You: 1, Opponent: 2
+You lose!
+You: 3, Opponent: 5
+You lose!
+You: 6, Opponent: 3
+You win!
+You: 1, Opponent: 4
+You lose!
+You: 3, Opponent: 3
+Draw
+You: 1, Opponent: 6
+You lose!
+You: 2, Opponent: 6
+You lose!
+You: 2, Opponent: 3
+You lose!
+You: 1, Opponent: 4
+You lose!
+You: 2, Opponent: 4
+You lose!
