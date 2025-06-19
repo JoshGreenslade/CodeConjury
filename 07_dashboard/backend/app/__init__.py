@@ -1,11 +1,15 @@
 from flask import Flask
-from features.hydration import hydration_bp
+from dotenv import load_dotenv
+from app.ServiceContainer import ServiceContainer
+from app.features.hydration.bootstrap import register_hydration
+from app.config import Config
 
-def create_app(config_class='app.config.DevConfig'):
+def create_app():
+    load_dotenv()
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    app.config.from_object(Config)
+
+    services = ServiceContainer(app.config)
+    register_hydration(app, services)
 
     return app
-
-def register_blueprints(app):
-    app.register_blueprint(hydration_bp)
