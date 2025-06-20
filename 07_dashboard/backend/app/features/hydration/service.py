@@ -2,6 +2,7 @@ from flask import Flask
 from app.common.notion.notion_client import NotionClient
 from app.ServiceContainer import ServiceContainer
 from datetime import date
+from .dtos.getHydration import getHydrationDto
 
 class HydrationService:
     def __init__(self, app: Flask, services: ServiceContainer):
@@ -19,9 +20,11 @@ class HydrationService:
             self._create_hydration_entry_for_today()
             return 0
         hydration = res[0]["properties"]['Amount (ml)']['number']
-        return hydration
+        dto = getHydrationDto(hydration)
+        return dto
 
     def set_todays_hydration_level(self, value):
+        print(value)
         db_filter = {
             "property": "Date",
             "date": {"equals": date.today().isoformat()}

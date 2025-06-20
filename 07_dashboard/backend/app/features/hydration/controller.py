@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import jsonify, Response, request
 from .service import HydrationService
 
 class HydrationController:
@@ -10,5 +10,6 @@ class HydrationController:
         return jsonify(data)
     
     def post(self):
-        value = 623
+        value = request.get_json()['hydration']
         self._service.set_todays_hydration_level(value)
+        return Response(status=200)

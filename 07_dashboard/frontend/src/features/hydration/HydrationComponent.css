@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  justify-content: center;
+
+}
+
+.sliderWrapper {
+  height: 60px;
+  width: 200px;
+  margin-bottom: 20px;
+  
+}
+
+.verticalSlider {
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  background: #ddd;
+  border-radius: 8px;
+  cursor: grab;
+  transform: rotate(90deg);
+  margin-bottom: 50px;
+}
+
+.verticalSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;      /* wider */
+  height: 50px;     /* taller */
+  background: #639aff; /* or any color */
+  border-radius: 8px;
+  cursor: grab;
+  border: none;
+  margin-top: 0px; 
+}
+
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+}
