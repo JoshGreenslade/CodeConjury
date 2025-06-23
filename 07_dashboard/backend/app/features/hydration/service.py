@@ -19,7 +19,7 @@ class HydrationService:
         if not res:
             self._create_hydration_entry_for_today()
             return 0
-        hydration = res[0]["properties"]['Amount (ml)']['number']
+        hydration = res[0].get_number('Amount (ml)')
         dto = getHydrationDto(hydration)
         return dto
 
@@ -36,7 +36,7 @@ class HydrationService:
             self._create_hydration_entry_for_today()
             res = self._notionClient.query_db(self._hydration_db, db_filter)
 
-        self._set_hydration_level_of_page(res[0]['id'], value)
+        self._set_hydration_level_of_page(res[0].get_id(), value)
 
     def _set_hydration_level_of_page(self, page_id: str, value: int):
         self._notionClient.set_page_property(page_id, 

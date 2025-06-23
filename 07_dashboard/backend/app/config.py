@@ -6,5 +6,6 @@ class Config:
     # Hydration
     NOTION_HYDRATION_DB_ID = os.getenv("NOTION_HYDRATION_DB_ID")
 
-    # Habbits
-    NOTION_HABBIT_DB_ID = os.getenv("NOTION_HABBIT_DB_ID")
+    # Habits
+    NOTION_HABIT_CONFIG_DB_ID = os.getenv("NOTION_HABIT_CONFIG_DB_ID")
+    NOTION_HABIT_TRACKER_DB_ID = os.getenv("NOTION_HABIT_TRACKER_DB_ID")
