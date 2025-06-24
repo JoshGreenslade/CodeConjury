@@ -16,4 +16,8 @@ pif() {
   "${find_cmd[@]}" -exec sh -c 'for f; do echo "=== $f ==="; cat "$f"; echo ""; done' _ {} +
 }
 
+addssh() {
+  eval "$(ssh-agent -s)"
+  ssh-add /home/developer/.ssh/id_work
+}
 

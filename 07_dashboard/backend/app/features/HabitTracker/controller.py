@@ -9,4 +9,7 @@ class HabitController:
         jsonify(self._service.get_todays_habits())
     
     def post(self):
-        raise NotImplementedError()
+        habit = request.get_json()['Habit']
+        checked = request.get_json()['Checked']
+        self._service.set_habit_completion(habit, checked)
+        return Response(status=200)

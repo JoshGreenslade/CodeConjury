@@ -1,0 +1,41 @@
+.habits_wrapper {  
+  box-sizing: border-box;
+  width: 20rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+}
+
+.habits_title {
+  margin: 0;
+}
+
+.habits_ul {
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.habit_li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.1rem 0.6rem;
+  align-items: center;
+
+  line-height: 1.6;
+  border-top: 1px solid #ccc;
+}
+
+.habit_title {
+  text-align: left;
+}
+
+.habit_checked {
+  width: 1.4rem;
+  height: 1.4rem;
+  min-width: 1.4rem;
+  cursor: pointer;
+
+  accent-color: #4caf50; /* checkbox highlight in modern browsers */
+}

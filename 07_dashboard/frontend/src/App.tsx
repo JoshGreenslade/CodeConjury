@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { HydrationComponent } from "./features/hydration/HydrationComponent";
+import { HabitComponent } from "./features/habit/HabitComponent";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,7 +20,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <HydrationComponent />
-
+      <HabitComponent />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
