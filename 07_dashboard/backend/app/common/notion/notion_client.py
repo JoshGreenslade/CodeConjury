@@ -7,10 +7,12 @@ class NotionClient:
 
     def query_db(self, db: str, db_filter: dict = None):
 
-        if db_filter:            
+        if db_filter:        
+            print("with filter")
+            print(db_filter)    
             res = self._notion.databases.query(
                 database_id=db,
-                db_filter = db_filter
+                filter = db_filter
             )
         else:
             res = self._notion.databases.query(database_id=db)

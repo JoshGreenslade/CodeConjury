@@ -12,8 +12,8 @@ class HydrationService:
     def get_todays_hydration_level(self):
         db_filter = {
             "property": "Date",
-            "date": {"equals": date.today().isoformat()}
-            }
+            "date": {"equals":date.today().isoformat()}
+        }
         res = self._notionClient.query_db(self._hydration_db, db_filter)
         print(res)
         if not res:
