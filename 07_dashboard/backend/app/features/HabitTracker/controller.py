@@ -6,7 +6,7 @@ class HabitController:
         self._service = habit_service
 
     def get(self):
-        jsonify(self._service.get_todays_habits())
+        return jsonify(self._service.get_todays_habits())
     
     def post(self):
         habit = request.get_json()['Habit']

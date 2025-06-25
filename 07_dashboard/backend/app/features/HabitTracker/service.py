@@ -2,11 +2,12 @@ from flask import Flask
 from app.ServiceContainer import ServiceContainer
 from datetime import date, datetime, time
 from croniter import croniter
+from .dtos.getHabitDto import getHabitDto
 
 NOTION_HABIT_CONFIG_DB_ID = "NOTION_HABIT_CONFIG_DB_ID"
 NOTION_HABIT_TRACKER_DB_ID = "NOTION_HABIT_TRACKER_DB_ID"
 HABIT_NAME_KEY = "Habit"
-HABIT_CHECKED_KEY = "Checkbox"
+HABIT_CHECKED_KEY = "Completed"
 HABIT_CREATED_KEY = "Created Date"
 HABIT_CRON_KEY = "Cron"
 HABIT_LAST_ADDED_KEY = "Last Added"
@@ -17,10 +18,15 @@ class HabitService:
         self._habit_config_db = app.config[NOTION_HABIT_CONFIG_DB_ID]
         self._habit_tracker_db = app.config[NOTION_HABIT_TRACKER_DB_ID]
 
-    def get_todays_habits(self):
+    def get_todays_habits(self) -> list[getHabitDto]:
         self._create_overdue_habits()
         habits = self._get_habits_created_today()
-        return habits
+        habits_dto = [getHabitDto(
+            Habit=habit.get_str(HABIT_NAME_KEY),
+            Checked=habit.get_checkbox(HABIT_CHECKED_KEY)
+        )
+                           for habit in habits]
+        return habits_dto
     
     def set_habit_completion(self, habit_name: str, completed: bool):
         habits = self._get_habits_created_today()
@@ -69,14 +75,3 @@ class HabitService:
             if next_due.date() <= date.today():
                 habits_due_for_creation.append(habit)
         return habits_due_for_creation
-
-    
-
-
-
-
-
-
-
-
-    

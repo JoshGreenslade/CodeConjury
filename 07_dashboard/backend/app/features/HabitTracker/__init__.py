@@ -1,3 +1,3 @@
 from flask import Blueprint
 
-habit_tracker_bp = Blueprint('habit', __name__, url_prefix='/habit')
+habit_tracker_bp = Blueprint('habits', __name__, url_prefix='/habits')

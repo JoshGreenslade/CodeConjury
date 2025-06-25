@@ -20,9 +20,4 @@ addssh() {
   eval "$(ssh-agent -s)"
   ssh-add /home/developer/.ssh/id_work
 }
-
-dboard() {
-    (cd ~/code-conjuring/07_dashboard/backend && source venv/bin/activate && python wsgi.py) &
-    (cd ~/code-conjuring/07_dashboard/frontend && npm run dev) &
-    echo "Both servers launched in background. Press 'jobs' to see them."
-}
+ 

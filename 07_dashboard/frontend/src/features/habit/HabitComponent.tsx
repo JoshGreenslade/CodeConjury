@@ -1,19 +1,30 @@
+import { useEffect, useState } from "react";
 import "./HabitComponent.css";
-
-type Habit = {
-  Habit: string;
-  Checked: boolean;
-};
+import { useGetHabits } from "./api/useGetHabits";
+import type { Habit } from "./types";
+import { usePostHabit } from "./api/usePostHabit";
 
 export const HabitComponent = () => {
-  const habits: Array<Habit> = [
-    {
-      Habit: "Test some extremely long habit which wsohuldsg overfill the line",
-      Checked: false,
-    },
-    { Habit: "Dog", Checked: false },
-    { Habit: "Cat", Checked: false },
-  ];
+  const { data, isLoading, error } = useGetHabits();
+  const [habits, setHabits] = useState<Array<Habit>>([]);
+  const { mutate: mutateHabit } = usePostHabit();
+
+  useEffect(() => {
+    if (data !== undefined) {
+      setHabits(data);
+    }
+  }, [data]);
+
+  const handleCheckboxChange = (habit: string, checked: boolean) => {
+    setHabits((prev) =>
+      prev.map((h) => (h.Habit === habit ? { ...h, Checked: checked } : h))
+    );
+
+    mutateHabit({ Habit: habit, Checked: checked });
+  };
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading data.</p>;
 
   return (
     <div className="habits_wrapper">
@@ -24,8 +35,11 @@ export const HabitComponent = () => {
             <span className="habit_title">{habit.Habit}</span>
             <input
               type="checkbox"
-              // checked={habit.Checked}
+              checked={habit.Checked}
               className="habit_checked"
+              onChange={(e) =>
+                handleCheckboxChange(habit.Habit, e.target.checked)
+              }
             />
           </li>
         ))}

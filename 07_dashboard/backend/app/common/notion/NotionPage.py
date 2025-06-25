@@ -26,3 +26,6 @@ class NotionPage:
 
     def get_number(self, prop: str):
         return self._props.get(prop, {}).get("number", None)
+    
+    def get_checkbox(self, prop: str):
+        return self._props.get(prop, {}).get("checkbox", None)
