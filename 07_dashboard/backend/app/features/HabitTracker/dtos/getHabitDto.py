@@ -4,3 +4,4 @@ from dataclasses import dataclass
 class getHabitDto:
     Habit: str
     Checked: bool
+    Url: str

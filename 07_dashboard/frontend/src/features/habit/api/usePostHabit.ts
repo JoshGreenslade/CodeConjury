@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
 import api from "../../../common/axios"
-import type { Habit } from "../types"
+import type { HabitPost } from "../types"
 
 export const usePostHabit = () => {
   return useMutation({
-    mutationFn: (data: Habit) => 
+    mutationFn: (data: HabitPost) => 
       api.post("/habits/", data),
   })
 }

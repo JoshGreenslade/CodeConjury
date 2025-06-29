@@ -1,5 +1,13 @@
 
-export type Habit = {
+export type HabitGet = {
   Habit: string;
-  Checked: boolean
+  Checked: boolean;
+  Url: string;
 };
+
+
+export type HabitPost = {
+  Habit: string;
+  Checked: boolean;
+};
+

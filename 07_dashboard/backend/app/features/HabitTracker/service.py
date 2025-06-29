@@ -23,9 +23,9 @@ class HabitService:
         habits = self._get_habits_created_today()
         habits_dto = [getHabitDto(
             Habit=habit.get_str(HABIT_NAME_KEY),
-            Checked=habit.get_checkbox(HABIT_CHECKED_KEY)
-        )
-                           for habit in habits]
+            Checked=habit.get_checkbox(HABIT_CHECKED_KEY),
+            Url=habit.get_url()
+        ) for habit in habits]
         return habits_dto
     
     def set_habit_completion(self, habit_name: str, completed: bool):
@@ -71,7 +71,6 @@ class HabitService:
             cron = habit.get_str(HABIT_CRON_KEY)
             last_added = datetime.combine(habit.get_date(HABIT_LAST_ADDED_KEY) or date.min, time.min)
             next_due = croniter(cron, last_added).get_next(datetime)
-            print(next_due.date())
             if next_due.date() <= date.today():
                 habits_due_for_creation.append(habit)
         return habits_due_for_creation

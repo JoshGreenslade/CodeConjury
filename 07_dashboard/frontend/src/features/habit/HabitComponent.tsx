@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import "./HabitComponent.css";
 import { useGetHabits } from "./api/useGetHabits";
-import type { Habit } from "./types";
+import type { HabitGet } from "./types";
 import { usePostHabit } from "./api/usePostHabit";
 
 export const HabitComponent = () => {
   const { data, isLoading, error } = useGetHabits();
-  const [habits, setHabits] = useState<Array<Habit>>([]);
+  const [habits, setHabits] = useState<Array<HabitGet>>([]);
   const { mutate: mutateHabit } = usePostHabit();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const HabitComponent = () => {
       <ul className="habits_ul">
         {habits.map((habit) => (
           <li key={habit.Habit} className="habit_li">
-            <span className="habit_title">{habit.Habit}</span>
+            <span><a href={habit.Url} target="_blank" className="habit_title">{habit.Habit}</a></span>
             <input
               type="checkbox"
               checked={habit.Checked}

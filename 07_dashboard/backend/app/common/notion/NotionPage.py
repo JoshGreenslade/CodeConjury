@@ -29,3 +29,7 @@ class NotionPage:
     
     def get_checkbox(self, prop: str):
         return self._props.get(prop, {}).get("checkbox", None)
+    
+    def get_url(self):
+        id = self.get_id().replace("-","")
+        return f"https://www.notion.so/{id}"
