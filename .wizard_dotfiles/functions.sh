@@ -21,3 +21,29 @@ addssh() {
   ssh-add /home/developer/.ssh/id_work
 }
  
+run_dboard() {
+  echo "Starting backend and frontend..."
+
+  # Start backend
+  (cd ~/code-conjuring/07_dashboard/backend && source venv/bin/activate && python wsgi.py) &
+  BACKEND_PID=$!
+
+  # Start frontend
+  (cd ~/code-conjuring/07_dashboard/frontend && npm run dev) &
+  FRONTEND_PID=$!
+
+  # Define a cleanup function
+  cleanup() {
+    echo "Stopping processes..."
+    kill $BACKEND_PID $FRONTEND_PID 2>/dev/null
+    wait $BACKEND_PID $FRONTEND_PID 2>/dev/null
+    echo "Cleaned up."
+  }
+
+  # Trap Ctrl+C
+  trap cleanup SIGINT
+
+  # Wait for both to finish
+  wait $BACKEND_PID $FRONTEND_PID
+}
+
