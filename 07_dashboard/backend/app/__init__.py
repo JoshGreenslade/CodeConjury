@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from app.ServiceContainer import ServiceContainer
 from app.features.hydration.bootstrap import register_hydration
 from app.features.HabitTracker.bootstrap import register_habits
+from app.features.ToDoList.bootstrap import register_todo
 from app.config import Config
 
 def create_app():
@@ -15,5 +16,6 @@ def create_app():
     services = ServiceContainer(app.config)
     register_hydration(app, services)
     register_habits(app, services)
+    register_todo(app, services)
 
     return app
