@@ -6,7 +6,7 @@ class TodoController:
         self._service = habit_service
 
     def get(self):
-        res = self._service._get_active_tasks()
+        res = self._service.get_prioritised_tasks("test")
         return jsonify(res)
 
     def post(self):
