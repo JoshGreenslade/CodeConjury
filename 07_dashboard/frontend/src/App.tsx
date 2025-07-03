@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { HydrationComponent } from "./features/hydration/HydrationComponent";
 import { HabitComponent } from "./features/habit/HabitComponent";
+import { TaskListComponent } from "./features/tasks/TaskListComponent";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,7 +21,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <HydrationComponent />
+      <br />
       <HabitComponent />
+      <br />
+      <TaskListComponent />
+      <br />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

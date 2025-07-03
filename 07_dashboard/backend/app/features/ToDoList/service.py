@@ -1,6 +1,8 @@
 from flask import Flask
 from app.ServiceContainer import ServiceContainer
 import requests
+
+from app.features.ToDoList.dtos.getPriortisedTasksDto import getPrioritisedTasksDto
 class TodoService:
     def __init__(self, app: Flask, services: ServiceContainer):
         return
@@ -10,6 +12,6 @@ class TodoService:
         res = requests.post(url, json={"context": context})
         print(res)
         if res.ok:
-            data = res.json()[0]['output']['recommended']
-            return data
+            data = res.json()[0]['output']
+            return getPrioritisedTasksDto(data)
         
