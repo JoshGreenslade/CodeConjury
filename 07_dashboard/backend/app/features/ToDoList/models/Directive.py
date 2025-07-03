@@ -1,19 +1,18 @@
 
+from typing import List
 from app.common.notion import NotionPage
-
 
 class Directive:
     
     @staticmethod
-    def from_notion_page(page: NotionPage, initiatves=None):
+    def from_notion_page(page: NotionPage):
         directive = Directive(
             name=page.get_str("Name"),
             done=page.get_checkbox("Done"),
             isActive=page.get_checkbox("IsActive"),
-            description=page.get_str("Description")
+            description=page.get_str("Description"),
+            id=page.get_id()
         )
-        if initiatves:
-            directive.set_initiatives(initiatves)
         return directive
 
     def __init__(self,
@@ -21,7 +20,9 @@ class Directive:
                  done: bool,
                  isActive: bool,
                  description: str,
+                 id: str = None
                  ) -> None:
+        self.Id = id
         self.Name = name
         self.Done = done
         self.IsActive = isActive
