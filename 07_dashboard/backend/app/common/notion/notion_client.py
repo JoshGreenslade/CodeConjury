@@ -15,7 +15,7 @@ class NotionClient:
         else:
             res = self._notion.databases.query(database_id=db)
         if not res:
-            return None
+            return []
         result = [NotionPage(i) for i in res.get("results", [])]
         return result
     

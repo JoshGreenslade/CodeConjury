@@ -1,0 +1,29 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    list-style-type: none;
+}
+
+.task {
+    display: grid;
+    grid-template-columns: 3fr 4fr 1fr 2rem;
+      align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.taskToggle {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.task-header {
+  display: grid;
+  grid-template-columns: 3fr 4fr 1fr 2rem; /* same as .task */
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  padding: 1rem 0;
+  margin-bottom: 0.5rem;
+}

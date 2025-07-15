@@ -1,7 +1,10 @@
+from typing import List
 from flask import Flask
 from app.ServiceContainer import ServiceContainer
 from datetime import date, datetime, time
 from croniter import croniter
+
+from app.common.notion import NotionPage
 from .dtos.getHabitDto import getHabitDto
 
 NOTION_HABIT_CONFIG_DB_ID = "NOTION_HABIT_CONFIG_DB_ID"
@@ -20,12 +23,16 @@ class HabitService:
 
     def get_todays_habits(self) -> list[getHabitDto]:
         self._create_overdue_habits()
+        config = self._get_habit_config()
         habits = self._get_habits_created_today()
         habits_dto = [getHabitDto(
             Habit=habit.get_str(HABIT_NAME_KEY),
             Checked=habit.get_checkbox(HABIT_CHECKED_KEY),
-            Url=habit.get_url()
+            Url=None
         ) for habit in habits]
+        for habit in habits_dto:
+            matching_config = [i for i in config if i.get_str(HABIT_NAME_KEY) == habit.Habit]
+            habit.Url = matching_config[0].get_url()
         return habits_dto
     
     def set_habit_completion(self, habit_name: str, completed: bool):
@@ -56,7 +63,7 @@ class HabitService:
                 HABIT_LAST_ADDED_KEY : {"date": {"start": date.today().isoformat()}}
             })
     
-    def _get_habits_created_today(self):
+    def _get_habits_created_today(self) -> List[NotionPage.NotionPage] | None:
         db_filter = {
             "property": HABIT_CREATED_KEY,
             "date": {"equals": date.today().isoformat()}

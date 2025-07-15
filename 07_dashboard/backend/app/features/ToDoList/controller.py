@@ -10,5 +10,7 @@ class TodoController:
         res = self._service.get_prioritised_tasks(context)
         return jsonify(res)
 
-    def post(self):
-        raise NotImplementedError()
+    def set_completed(self):
+        context = request.get_json()
+        res = self._service.set_task_completion(context['task_id'], context['completed'])
+        return Response(status=200)

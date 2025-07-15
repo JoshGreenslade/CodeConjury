@@ -1,0 +1,23 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 104-251-327
+127.0.0.1 - - [30/Jun/2025 15:24:05] "[32mGET /habits HTTP/1.1[0m" 308 -
+127.0.0.1 - - [30/Jun/2025 15:24:08] "GET /hydration/today HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 15:24:09] "GET /habits/ HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 15:24:13] "OPTIONS /hydration/today HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 15:24:15] "POST /hydration/today HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 15:24:15] "POST /hydration/today HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 16:26:29] "OPTIONS /habits/ HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 16:26:30] "POST /habits/ HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 16:42:47] "OPTIONS /habits/ HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 16:42:49] "POST /habits/ HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 20:38:45] "[32mGET /habits HTTP/1.1[0m" 308 -
+127.0.0.1 - - [30/Jun/2025 20:38:47] "GET /hydration/today HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 20:38:50] "GET /habits/ HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 20:38:51] "OPTIONS /hydration/today HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2025 20:38:52] "POST /hydration/today HTTP/1.1" 200 -

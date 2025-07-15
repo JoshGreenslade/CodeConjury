@@ -1,5 +1,5 @@
 export type TasksResponse = {
-  results: TasksData
+  results: TasksData;
 }
 
 export type TasksData = {
@@ -12,4 +12,5 @@ export type Task = {
   title: string;
   reason: string;
   effort: number;
+  done: boolean;
 }
