@@ -24,6 +24,20 @@ class TodoService:
             TASK_DONE_KEY : {"checkbox": completed}
         })
 
+    def add_new_task(self, task: str):
+        url = "http://192.168.0.107:5678/webhook/addTask"
+        res = requests.post(url, json={"Task": task})
+        print(res)
+        if res.ok:
+            data = res.json()[0]['output']
+            return self._create_new_task(data)
+        
+        self._notionClient.create_page
+
     # ===== Private =====
     def _get_tasks(self):
         return self._notionClient.query_db(self._notion_tasks_db)
+
+    def _create_new_task(self, data):
+        properties = 
+        self._notionClient.create_page()
