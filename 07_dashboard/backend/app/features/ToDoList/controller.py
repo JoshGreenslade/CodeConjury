@@ -14,3 +14,8 @@ class TodoController:
         context = request.get_json()
         res = self._service.set_task_completion(context['task_id'], context['completed'])
         return Response(status=200)
+    
+    def add_new(self):
+        context = request.get_json()
+        res = self._service.add_new_task(context['taskName'])
+        return Response(status=200)
